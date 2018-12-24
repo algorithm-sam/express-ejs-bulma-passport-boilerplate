@@ -1,0 +1,36 @@
+{
+  "name": "express-ejs-bulma-passport-boilerplate",
+  "version": "1.0.0",
+  "description": "A boilerplate for building node and express web applications",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/algorithm-sam/express-ejs-bulma-passport-boilerplate.git"
+  },
+  "keywords": [
+    "A",
+    "node",
+    "express",
+    "bulma",
+    "ejs",
+    "and",
+    "passport",
+    "boilerplate"
+  ],
+  "author": "Ohidoa Oluwatobi Samuel",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/algorithm-sam/express-ejs-bulma-passport-boilerplate/issues"
+  },
+  "homepage": "https://github.com/algorithm-sam/express-ejs-bulma-passport-boilerplate#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "bulma": "^0.7.2",
+    "express": "^4.16.4",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0"
+  }
+}
