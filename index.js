@@ -2,6 +2,10 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const session = require('express-session');
+const {
+    usersRoute,
+    defaultRoute
+} = require('./src/routes/index');
 
 
 const bodyParser = require('body-parser');
@@ -31,8 +35,10 @@ app.set('view engine', 'ejs');
 
 
 app.use(express.static(path.join(__dirname, 'public')));
-app.get('/', (req, res) => {
-    res.render('index')
+app.get('/', defaultRoute);
+app.use('/users', usersRoute);
+app.get('*', (req, res) => {
+    res.end('404 Page not found')
 })
 
 // console.log(ENV);
