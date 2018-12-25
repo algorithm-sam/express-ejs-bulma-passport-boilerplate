@@ -1,5 +1,6 @@
 @import 'bulma.min.css';
 @import url('https://fonts.googleapis.com/css?family=Montserrat|Thasadith');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
 
 body,
 html {
@@ -10,15 +11,18 @@ html {
 }
 
 #full-height {
-    height: 90vh;
+    height: 95vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-weight: 600;
     font-size: 2em;
-
+    /* background: #ccc; */
 }
 
 .is-custom-primary {
     background: #eee;
+}
+
+#loginForm {
+    width: 35%;
 }

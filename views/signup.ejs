@@ -13,7 +13,7 @@
     <nav class="navbar is-custom-primary" role="navigation" aria-label="main navigation">
         <div class="container">
             <div class="navbar-brand">
-                <a class="navbar-item" href="https://bulma.io">
+                <a class="navbar-item" href="/">
                     <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
                 </a>
 
@@ -59,10 +59,10 @@
 
                 <div class="navbar-end">
 
-                    <a class="navbar-item">
+                    <a class="navbar-item" href="#">
                         Sign up
                     </a>
-                    <a class="navbar-item">
+                    <a class="navbar-item" href="/login">
                         Log in
                     </a>
                 </div>
@@ -76,11 +76,56 @@
     <div id="wrapper">
         <section id="full-height">
 
+            <div id="loginForm">
+                <div class="card">
 
-            <h1>
-                Home Page of Somthing Nice
-            </h1>
+                    <div class="card-content">
 
+
+                        <div class="content">
+                            <p>Create Account</p>
+                            <form action="/signup" method="POST">
+
+                                <div class="field">
+                                    <p class="control has-icons-left">
+                                        <input class="input" type="text" placeholder="Username" name="username">
+                                        <span class="icon is-small is-left">
+                                            <i class="fa fa-user"></i>
+                                        </span>
+
+                                    </p>
+                                </div>
+
+                                <div class="field">
+                                    <p class="control has-icons-left">
+                                        <input class="input" type="email" placeholder="Email" name="email">
+                                        <span class="icon is-small is-left">
+                                            <i class="fa fa-envelope"></i>
+                                        </span>
+
+                                    </p>
+                                </div>
+                                <div class="field">
+                                    <p class="control has-icons-left">
+                                        <input class="input" type="password" placeholder="Password" name="password">
+                                        <span class="icon is-small is-left">
+                                            <i class="fa fa-lock"></i>
+                                        </span>
+                                    </p>
+                                </div>
+                                <div class="field">
+                                    <p class="control">
+                                        <button class="button is-info is-rounded is-outlined">
+                                            Continue
+                                        </button>
+                                    </p>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
 
         </section>
     </div>

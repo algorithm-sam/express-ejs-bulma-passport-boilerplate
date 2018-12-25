@@ -1,9 +1,15 @@
 const express = require('express');
-const passport = require('passport');
+const passport = require('./src/passport/index');
+const mongoose = require('mongoose');
 const app = express();
+const helmet = require('helmet');
 const path = require('path');
 const session = require('express-session');
 
+mongoose.Promise = global.Promise;
+
+// tell express to use helmet
+app.use(helmet())
 
 // set up view engines
 app.set('view engine', 'ejs');
@@ -48,7 +54,7 @@ const {
 
 
 // set up your routing here
-app.get('/', defaultRoute);
+app.use('/', defaultRoute);
 app.use('/users', usersRoute);
 
 //setup your fallback route here
@@ -57,6 +63,7 @@ app.get('*', (req, res) => {
 })
 
 // start your server
+mongoose.connect('mongodb://localhost:27017/boilerPlate');
 app.listen(process.env.port || 3000, () => {
     console.log(`App listening on port ${process.env.port||3000}`);
 
