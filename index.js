@@ -5,7 +5,14 @@ const app = express();
 const helmet = require('helmet');
 const path = require('path');
 const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
 // const morgan = require('morgan');
+
+
+//connect to mongodb
+mongoose.connect('mongodb://localhost:27017/boilerPlate');
+
+//add support for persistent session store;
 
 // app.use(morgan());
 mongoose.Promise = global.Promise;
@@ -31,8 +38,13 @@ app.use(bodyParser.json());
 //set up session
 app.use(session({
     saveUninitialized: false,
-    resave: true,
-    secret: 'some-secret'
+    resave: false,
+    secret: 'some-secret', // migrate this secret and set it in your config or enviromental variables sometime in the future
+    store: new MongoStore({
+        ttl: 1 * 24 * 60 * 60, // set session to expire in 24hours if requests are not made to the server
+        touchAfter: 60 * 60, //update every one hour
+        url: 'mongodb://localhost:27017/boilerPlate', // let the store connect using this url, i plan on changing this to use the existing connection on the server
+    })
 }));
 
 // initialize passport
@@ -65,7 +77,7 @@ app.get('*', (req, res) => {
 })
 
 // start your server
-mongoose.connect('mongodb://localhost:27017/boilerPlate');
+
 app.listen(process.env.port || 3000, () => {
     console.log(`App listening on port ${process.env.port||3000}`);
 
