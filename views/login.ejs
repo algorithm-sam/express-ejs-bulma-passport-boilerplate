@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>This is the basic home page</title>
-    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="/css/home.css">
 </head>
 
 <body>
@@ -53,30 +53,32 @@
 
                         <div class="content">
                             <p>Login to Proceed</p>
-                            <div class="field">
-                                <p class="control has-icons-left">
-                                    <input class="input" type="email" placeholder="Email">
-                                    <span class="icon is-small is-left">
-                                        <i class="fa fa-envelope"></i>
-                                    </span>
+                            <form action="/login" method="POST">
+                                <div class="field">
+                                    <p class="control has-icons-left">
+                                        <input class="input" type="email" placeholder="Email" name="email">
+                                        <span class="icon is-small is-left">
+                                            <i class="fa fa-envelope"></i>
+                                        </span>
 
-                                </p>
-                            </div>
-                            <div class="field">
-                                <p class="control has-icons-left">
-                                    <input class="input" type="password" placeholder="Password">
-                                    <span class="icon is-small is-left">
-                                        <i class="fa fa-lock"></i>
-                                    </span>
-                                </p>
-                            </div>
-                            <div class="field">
-                                <p class="control">
-                                    <button class="button is-info is-rounded is-outlined">
-                                        Lets go there
-                                    </button>
-                                </p>
-                            </div>
+                                    </p>
+                                </div>
+                                <div class="field">
+                                    <p class="control has-icons-left">
+                                        <input class="input" type="password" placeholder="Password" name="password">
+                                        <span class="icon is-small is-left">
+                                            <i class="fa fa-lock"></i>
+                                        </span>
+                                    </p>
+                                </div>
+                                <div class="field">
+                                    <p class="control">
+                                        <button class="button is-info is-rounded is-outlined">
+                                            Lets go there
+                                        </button>
+                                    </p>
+                                </div>
+                            </form>
                         </div>
                     </div>
 

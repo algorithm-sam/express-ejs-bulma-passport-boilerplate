@@ -5,7 +5,9 @@ const app = express();
 const helmet = require('helmet');
 const path = require('path');
 const session = require('express-session');
+// const morgan = require('morgan');
 
+// app.use(morgan());
 mongoose.Promise = global.Promise;
 
 // tell express to use helmet
@@ -15,7 +17,7 @@ app.use(helmet())
 app.set('view engine', 'ejs');
 
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static('public'));
 
 
 // allow your app to parse urlencoded and json encoded request data

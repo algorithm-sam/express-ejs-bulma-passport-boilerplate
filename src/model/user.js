@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+mongoose.Promise = global.Promise;
 const Schema = mongoose.Schema;
 const bcrypt = require('bcryptjs');
 //note always define the child schema first before passing it to the parent schema incase you do nest schemas
@@ -35,8 +36,24 @@ userSchema.methods = {
 // model methods... a wrapper to contain all methods available to the model
 userSchema.statics = {
     authenticate(email, password) {
+        let User = this;
+        return User.findOne({
+                email
+            })
+            .then(user => {
+                if (!user) return Promise.reject({
+                    msg: 'User does not exist'
+                });
 
-        return true;
+                let isMatch = bcrypt.compareSync(password, user.password);
+                if (!isMatch) return Promise.reject({
+                    msg: 'Incorrect Password'
+                });
+                else {
+                    return user;
+                }
+            })
+
     }
 }
 
