@@ -7,7 +7,10 @@ router.get('/', (req, res) => {
 
 
 router.get('/login', (req, res) => {
-    res.render('login')
+    if(req.isUnauthenticated()) res.render('login');
+    else res.redirect('users/dashboard')
+    
+    
 })
 
 router.post('/login', passport.authenticate('local', {
@@ -19,7 +22,8 @@ router.post('/login', passport.authenticate('local', {
 })
 
 router.get('/register', (req, res) => {
-    res.render('signup');
+    if (req.isUnauthenticated()) res.render('signup');
+    else res.redirect('users/dashboard');
 })
 
 router.post('/signup', (req, res) => {

@@ -75,7 +75,7 @@ app.use("/users", usersRoute);
 app.get("*", (req, res) => {
 
     // add a 404 page to handle your 404 errors;
-    res.end("404 Page not found");
+    res.render('error_404')
 });
 
 // start your server
