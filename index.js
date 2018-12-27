@@ -6,6 +6,9 @@ const path = require("path");
 const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
 
+// work on role based authentication 
+
+
 // import database connection
 let dbConnection = require("./src/db/mongoose");
 
@@ -20,24 +23,27 @@ app.use(express.static("public"));
 // allow your app to parse urlencoded and json encoded request data
 const bodyParser = require("body-parser");
 app.use(
-  bodyParser.urlencoded({
-    extended: true
-  })
+    bodyParser.urlencoded({
+        extended: true
+    })
 );
 app.use(bodyParser.json());
 
 //set up session
 app.use(
-  session({
-    saveUninitialized: false,
-    resave: false,
-    secret: "some-secret", // migrate this secret and set it in your config or enviromental variables sometime in the future
-    store: new MongoStore({
-      ttl: 1 * 24 * 60 * 60, // set session to expire in 24hours if requests are not made to the server
-      touchAfter: 60 * 60, //update every one hour
-      mongooseConnection: dbConnection.connection // tell your store to use your db defined in your database file to store your session;
+    session({
+        saveUninitialized: false,
+        resave: false,
+        secret: "some-secret", // migrate this secret and set it in your config or enviromental variables sometime in the future
+        cookie: {
+            expires: new Date(Date.now() + 60 * 60 * 1000)
+        },
+        store: new MongoStore({
+            ttl: 1 * 24 * 60 * 60, // set session to expire in 24hours if requests are not made to the server
+            touchAfter: 60 * 60, //update every one hour
+            mongooseConnection: dbConnection.connection // tell your store to use your db defined in your database file to store your session;
+        })
     })
-  })
 );
 
 // initialize passport
@@ -46,8 +52,18 @@ app.use(passport.initialize());
 // inform passport of the session and tell the app to allow passport manage your sessions;
 app.use(passport.session());
 
+
 // setup your routes
-const { usersRoute, defaultRoute } = require("./src/routes/index");
+const {
+    usersRoute,
+    defaultRoute
+} = require("./src/routes/index");
+
+//middleware to pass user obj to the req.locals in the ejs instance.
+app.use(function (req, res, next) {
+    res.locals.user = req.user || null;
+    next();
+})
 
 //set up any other middleware in here
 
@@ -57,11 +73,13 @@ app.use("/users", usersRoute);
 
 //setup your fallback route here
 app.get("*", (req, res) => {
-  res.end("404 Page not found");
+
+    // add a 404 page to handle your 404 errors;
+    res.end("404 Page not found");
 });
 
 // start your server
 
 app.listen(process.env.port || 3000, () => {
-  console.log(`App listening on port ${process.env.port || 3000}`);
+    console.log(`App listening on port ${process.env.port || 3000}`);
 });
