@@ -1,5 +1,5 @@
 const router = require('express').Router();
-// const User = require('../model/user');
+
 const connection = require('../db/mysql');
 let passport = require('../passport/index');
 router.get('/', (req, res) => {
@@ -50,17 +50,6 @@ router.post('/signup', (req, res, next) => {
             })
         }
     })
-
-    // User.create(user)
-    //     .then((user) => {
-    //         req.login(user, (err) => {
-    //             if (err) next(err);
-    //             res.redirect('users/dashboard');
-    //         })
-    //     })
-    //     .catch(err => {
-    //         res.send(err);
-    //     })
 
 })
 module.exports = router;
