@@ -7,6 +7,15 @@ const session = require("express-session");
 // const MongoStore = require("connect-mongo")(session);
 var MySQLStore = require('express-mysql-session')(session);
 
+// setup sequelize ORM for use with the project
+//setup input validator
+//setup error handler
+//setup logger to file and to console;
+
+
+
+
+
 // work on role based authentication 
 
 

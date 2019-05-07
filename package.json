@@ -4,7 +4,8 @@
   "description": "A boilerplate for building node and express web applications",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -38,8 +39,10 @@
     "mongodb": "^3.1.10",
     "mongoose": "^5.4.0",
     "mysql": "^2.16.0",
+    "mysql2": "^1.6.5",
     "passport": "^0.4.0",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "sequelize": "^5.8.5"
   },
   "devDependencies": {
     "morgan": "^1.9.1"
