@@ -105,6 +105,6 @@ app.get("*", (req, res) => {
 
 // start your server
 
-app.listen(process.env.port || 3000, () => {
-    console.log(`App listening on port ${process.env.port || 3000}`);
+app.listen(process.env.port || 9000, () => {
+    console.log(`App listening on port ${process.env.port || 9000}`);
 });

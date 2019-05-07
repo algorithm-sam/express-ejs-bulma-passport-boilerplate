@@ -39,7 +39,6 @@ router.post('/signup', (req, res, next) => {
     connection.query("INSERT into users (username,email,password) VALUES (?,?,?)", [user.username, user.email, user.password], (err, response) => {
         if (err) res.send(err);
         else {
-            console.log(response);
             req.login({
                 email: user.email,
                 password: user.password,
